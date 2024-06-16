@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use ApiResponse;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,7 +28,7 @@ class RegisterContoller extends Controller
             'email'=>$user->email,
         ];
         if($user) {
-            return response()->json($data, 201, );
+            return ApiResponse::apiResponse(201, 'user created successfully', $data);
         } else {
             return response()->json( 'Invalid credentials', 422);
         }
